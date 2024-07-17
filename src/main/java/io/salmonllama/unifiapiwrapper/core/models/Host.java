@@ -1,4 +1,4 @@
-package io.salmonllama.models;
+package io.salmonllama.unifiapiwrapper.core.models;
 
 import com.google.gson.annotations.SerializedName;
 import org.jetbrains.annotations.Nullable;
