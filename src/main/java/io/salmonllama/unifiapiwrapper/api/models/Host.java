@@ -1,22 +1,22 @@
-package io.salmonllama.unifiapiwrapper.core.models;
+package io.salmonllama.unifiapiwrapper.api.models;
 
 import com.google.gson.annotations.SerializedName;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public record Host (
+public record Host(
     @SerializedName("id") String id,
     @SerializedName("hardwareId") String hardwareId,
     @SerializedName("ipAddress") String ipAddress,
-    @SerializedName("isBlocked") boolean isBlocked,
+    @SerializedName("isBlocked") Boolean isBlocked,
     @SerializedName("lastConnectionStateChange") String lastConnectionStateChange,
     @SerializedName("LatestBackupTime") String latestBackupTime,
-    @SerializedName("owner") boolean owner,
+    @SerializedName("owner") Boolean owner,
     @SerializedName("registrationTime") String registrationTime,
     @SerializedName("reportedState") ReportedState reportedState,
     @SerializedName("type") String type,
-    @SerializedName("userData") @Nullable UserData userData
+    @SerializedName("userData") UserData userData
 ) {
     public record ReportedState(
             @SerializedName("anonid") String anonId,
@@ -24,28 +24,28 @@ public record Host (
             @SerializedName("availableChannels") List<String> availableChannels,
             @SerializedName("consolesOnSameLocalNetwork") List<String> consolesOnSameLocalNetwork, // TODO: Unknown content
             @SerializedName("controller_uuid") String controllerUuid,
-            @SerializedName("deviceId") @Nullable String deviceId,
-            @SerializedName("firmware_version") @Nullable String firmwareVersion,
-            @SerializedName("hardware_id") @Nullable String hardwareId,
+            @SerializedName("deviceId") String deviceId,
+            @SerializedName("firmware_version") String firmwareVersion,
+            @SerializedName("hardware_id") String hardwareId,
             @SerializedName("controllers") List<Controller> controllers,
-            @SerializedName("country") int country,
-            @SerializedName("deviceErrorCode") int deviceErrorCode, // TODO: Unsure if int, example shows null
+            @SerializedName("country") Integer country,
+            @SerializedName("deviceErrorCode") Integer deviceErrorCode, // TODO: Unsure if Integer, example shows null
             @SerializedName("deviceState") String deviceState,
-            @SerializedName("deviceStateLastChanged") long deviceStateLastChanged,
+            @SerializedName("deviceStateLastChanged") Long deviceStateLastChanged,
             @SerializedName("directConnectDomain") String directConnectDomain,
             @SerializedName("features") Features features,
             @SerializedName("firmwareUpdate") FirmwareUpdate firmwareUpdate,
             @SerializedName("hardware") Hardware hardware,
-            @SerializedName("host_type") int hostType,
+            @SerializedName("host_type") Integer hostType,
             @SerializedName("hostname") String hostname,
-            @SerializedName("inform_port") int informPort,
+            @SerializedName("inform_port") Integer informPort,
             @SerializedName("internetIssues5min") InternetIssues5Min internetIssues5Min,
             @SerializedName("ip") String ip,
             @SerializedName("apAddrs") List<String> ipAddrs,
-            @SerializedName("isStacked") boolean isStacked,
+            @SerializedName("isStacked") Boolean isStacked,
             @SerializedName("location") Location location,
             @SerializedName("mac") String mac,
-            @SerializedName("mgmt_port") int mgmtPort,
+            @SerializedName("mgmt_port") Integer mgmtPort,
             @SerializedName("name") String name,
             @SerializedName("releaseChannel") String releaseChannel,
             @SerializedName("state") String state,
@@ -57,75 +57,76 @@ public record Host (
         public record App(
                 @SerializedName("controllerStatus") String controllerStatus,
                 @SerializedName("name") String name,
-                @SerializedName("port") int port,
-                @SerializedName("swaiVersion") int swaiVersion,
+                @SerializedName("port") Integer port,
+                @SerializedName("swaiVersion") Integer swaiVersion,
                 @SerializedName("type") String type,
                 @SerializedName("version") String version
         ) {}
 
         public record Controller(
-                @SerializedName("abridged") boolean abridged,
+                @SerializedName("abridged") Boolean abridged,
                 @SerializedName("controllerStatus") String controllerStatus,
                 @SerializedName("features") Features features,
-                @SerializedName("initialDeviceListSynced") boolean initialDeviceListSynced,
+                @SerializedName("initialDeviceListSynced") Boolean initialDeviceListSynced,
                 @SerializedName("installState") String installState,
-                @SerializedName("installable") boolean installable,
-                @SerializedName("isConfigured") boolean isConfigured,
-                @SerializedName("isGeofencingEnabled") boolean isGeofencingEnabled,
-                @SerializedName("isInstalled") boolean isInstalled,
-                @SerializedName("isRunning") boolean isRunning,
+                @SerializedName("installable") Boolean installable,
+                @SerializedName("isConfigured") Boolean isConfigured,
+                @SerializedName("isGeofencingEnabled") Boolean isGeofencingEnabled,
+                @SerializedName("isInstalled") Boolean isInstalled,
+                @SerializedName("isRunning") Boolean isRunning,
                 @SerializedName("name") String name,
-                @SerializedName("port") int port,
+                @SerializedName("port") Integer port,
                 @SerializedName("releaseChannel") String releaseChannel,
-                @SerializedName("restorePercentage") int restorePercentage,
-                @SerializedName("required") boolean required,
+                @SerializedName("restorePercentage") Integer restorePercentage,
+                @SerializedName("required") Boolean required,
                 @SerializedName("state") String state,
                 @SerializedName("status") String status,
                 @SerializedName("statusMessage") String statusMessage,
-                @SerializedName("swaiVersion") int swaiVersion,
+                @SerializedName("swaiVersion") Integer swaiVersion,
                 @SerializedName("type") String type,
                 @SerializedName("uiVersion") String uiVersion,
                 @SerializedName("unadoptedDevices") List<String> unadoptedDevices, // TODO, unknown contents
-                @SerializedName("updatable") boolean updatable,
-                @SerializedName("updateAvailable") boolean updateAvailable,
+                @SerializedName("updatable") Boolean updatable,
+                @Nullable
+                @SerializedName("updateAvailable") Boolean updateAvailable,
                 @SerializedName("version") String version
         ) {
             public record Features(
-                    @SerializedName("stackable") boolean stackable
+                    @SerializedName("stackable") Boolean stackable
             ) {}
         }
 
         public record Features(
                 @SerializedName("cloud") Cloud cloud,
-                @SerializedName("cloudBackup") boolean cloudBackup,
+                @SerializedName("cloudBackup") Boolean cloudBackup,
                 @SerializedName("deviceList") DeviceList deviceList,
-                @SerializedName("directRemoteConnection") boolean directRemoteConnection,
-                @SerializedName("hasGateway") boolean hasGateway,
-                @SerializedName("hasLCM") boolean hasLcm,
-                @SerializedName("hasLED") boolean hasLed,
+                @SerializedName("directRemoteConnection") Boolean directRemoteConnection,
+                @SerializedName("hasGateway") Boolean hasGateway,
+                @SerializedName("hasLCM") Boolean hasLcm,
+                @SerializedName("hasLED") Boolean hasLed,
                 @SerializedName("infoApis") InfoApis infoApis,
-                @SerializedName("isAutomaticFailoverAvailable") boolean isAutomaticFailoverAvailable,
-                @SerializedName("mfa") boolean mfa,
-                @SerializedName("notifications") boolean notifications,
-                @SerializedName("sharedTokens") boolean sharedTokens,
-                @SerializedName("supportForm") boolean supportForm,
-                @SerializedName("teleport") boolean teleport,
+                @SerializedName("isAutomaticFailoverAvailable") Boolean isAutomaticFailoverAvailable,
+                @SerializedName("mfa") Boolean mfa,
+                @SerializedName("notifications") Boolean notifications,
+                @SerializedName("sharedTokens") Boolean sharedTokens,
+                @SerializedName("supportForm") Boolean supportForm,
+                @SerializedName("teleport") Boolean teleport,
                 @SerializedName("teleportState") String teleportState,
-                @SerializedName("uidService") boolean uidService
+                @SerializedName("uidService") Boolean uidService
         ) {
             public record Cloud(
-                    @SerializedName("applicationEvents") boolean applicationEvents,
-                    @SerializedName("applicationEventsHttp") boolean applicationEventsHttp
+                    @SerializedName("applicationEvents") Boolean applicationEvents,
+                    @SerializedName("applicationEventsHttp") Boolean applicationEventsHttp
             ) {}
 
             public record DeviceList(
-                    @SerializedName("autolinkDevice") boolean autoLinkDevices,
-                    @SerializedName("partialUpdates") boolean partialUpdates,
-                    @SerializedName("ucp4Events") boolean ucp4Events
+                    @SerializedName("autolinkDevice") Boolean autoLinkDevices,
+                    @SerializedName("partialUpdates") Boolean partialUpdates,
+                    @SerializedName("ucp4Events") Boolean ucp4Events
             ) {}
 
             public record InfoApis(
-                    @SerializedName("firmwareUpdate") boolean firmwareUpdate
+                    @SerializedName("firmwareUpdate") Boolean firmwareUpdate
             ) {}
         }
 
@@ -138,7 +139,7 @@ public record Host (
                 @SerializedName("cpu.id") String cpuId,
                 @SerializedName("debianCodename") String debianCodename,
                 @SerializedName("firmwareVersion") String firmwareVersion,
-                @SerializedName("hwrev") long hwRev,
+                @SerializedName("hwrev") Long hwRev,
                 @SerializedName("mac") String mac,
                 @SerializedName("name") String name,
                 @SerializedName("qrid") String qrId,
@@ -146,7 +147,7 @@ public record Host (
                 @SerializedName("serialNo") String serialNo,
                 @SerializedName("shortname") String shortName,
                 @SerializedName("subtype") String subType,
-                @SerializedName("sysid") long sysId,
+                @SerializedName("sysid") Long sysId,
                 @SerializedName("upgrade") String upgrade,
                 @SerializedName("uuid") String uuid
         ) {}
@@ -155,14 +156,14 @@ public record Host (
                 @SerializedName("periods") List<Period> periods
         ) {
             public record Period(
-                    @SerializedName("index") long index
+                    @SerializedName("index") Long index
             ) {}
         }
 
         public record Location(
-                @SerializedName("lat") float latitude,
-                @SerializedName("long") float longitude,
-                @SerializedName("radius") int radius,
+                @SerializedName("lat") Float latitude,
+                @SerializedName("Long") Float longitude,
+                @SerializedName("radius") Integer radius,
                 @SerializedName("text") String text
         ) {}
 
@@ -196,7 +197,7 @@ public record Host (
                 @SerializedName("mac") String mac,
                 @SerializedName("role") String role,
                 @SerializedName("roleAttributes") RoleAttributes roleAttributes,
-                long sysId
+                Long sysId
         ) {
             public record RoleAttributes(
                     @SerializedName("applications") Applications applications,
@@ -213,31 +214,31 @@ public record Host (
                         @SerializedName("talk") Application talk
                 ) {
                     public record Application(
-                            @SerializedName("owned") boolean owned,
-                            @SerializedName("required") boolean required,
-                            @SerializedName("supported") boolean supported
+                            @SerializedName("owned") Boolean owned,
+                            @SerializedName("required") Boolean required,
+                            @SerializedName("supported") Boolean supported
                     ) {}
                 }
             }
         }
 
         public record Features(
-                @SerializedName("deviceGroups") boolean deviceGroups,
+                @SerializedName("deviceGroups") Boolean deviceGroups,
                 @SerializedName("floorplan") Floorplan floorplan,
-                @SerializedName("manageApplications") boolean manageApplications,
-                @SerializedName("notifications") boolean notifications,
-                @SerializedName("pion") boolean pion,
+                @SerializedName("manageApplications") Boolean manageApplications,
+                @SerializedName("notifications") Boolean notifications,
+                @SerializedName("pion") Boolean pion,
                 @SerializedName("webrtc") WebRTC webRtc
         ) {
             public record Floorplan(
-                    @SerializedName("CanEdit") boolean canEdit,
-                    @SerializedName("canView") boolean canView
+                    @SerializedName("CanEdit") Boolean canEdit,
+                    @SerializedName("canView") Boolean canView
             ) {}
 
             public record WebRTC(
-                    @SerializedName("iceRestart") boolean iceRestart,
-                    @SerializedName("mediaStreams") boolean mediaStreams,
-                    @SerializedName("twoWayAudio") boolean twoWayAudio
+                    @SerializedName("iceRestart") Boolean iceRestart,
+                    @SerializedName("mediaStreams") Boolean mediaStreams,
+                    @SerializedName("twoWayAudio") Boolean twoWayAudio
             ) {}
         }
 
